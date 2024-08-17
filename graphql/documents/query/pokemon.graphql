@@ -1,0 +1,24 @@
+query GetPokemon($name: String!) {
+  pokemon(name: $name) {
+    id
+    name
+    height
+    weight
+    abilities {
+      ability {
+        name
+      }
+    }
+    types {
+      type {
+        name
+      }
+    }
+    stats {
+      base_stat
+      stat {
+        name
+      }
+    }
+  }
+}
