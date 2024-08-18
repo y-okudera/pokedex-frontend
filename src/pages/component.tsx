@@ -1,3 +1,4 @@
+import Page from "@/components/Page";
 import PokemonGrid from "@/components/PokemonGrid";
 import { PokemonItem } from "@/repositories/graphql";
 
@@ -6,7 +7,11 @@ type Props = {
 };
 
 const Component = ({ pokemonItems }: Props) => {
-  return <PokemonGrid pokemonItems={pokemonItems ?? []} />;
+  return (
+    <Page title="pokedex" description="pokedexのトップページ">
+      <PokemonGrid pokemonItems={pokemonItems ?? []} />;
+    </Page>
+  );
 };
 
 export default Component;

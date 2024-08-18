@@ -8,3 +8,11 @@ export const ThumbSize = {
     height: 150,
   },
 };
+
+export const HeaderSize = {
+  height: 64,
+};
+
+export const LogoSize = {
+  width: 150,
+};
