@@ -1,3 +1,9 @@
+<div align="center">
+  <img width="1624" src="https://github.com/user-attachments/assets/de459139-04aa-424d-82f2-ca64cfc120bf" alt="pokedex_frontend">
+  <img width="1624" alt="pokedex_top" src="https://github.com/user-attachments/assets/576fd936-5d34-4de1-8dcd-0860ddffc990">
+  <img width="1624" alt="pokedex_detail" src="https://github.com/user-attachments/assets/51e8882e-2eee-4799-a8bd-361fa2598b49">
+</div>
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -19,6 +25,20 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Environment Variables
+Before running the project, make sure to set the required environment variables. You can do this by creating a .env file in the root directory with the following content:
+
+```bash
+# .env
+NEXT_PUBLIC_POKE_API_URL=https://example.com/graphql
+```
+
+### Explanation
+
+- `NEXT_PUBLIC_POKE_API_URL`: The URL of the GraphQL API endpoint. Replace the placeholder URL with the actual endpoint for your project.
+
+Make sure that the environment variable is prefixed with `NEXT_PUBLIC_` so that it is exposed to the browser as required by Next.js.
 
 ## Learn More
 
