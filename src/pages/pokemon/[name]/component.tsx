@@ -1,8 +1,8 @@
 import Gauge from "@/components/Gauge";
 import Page from "@/components/Page";
-import { BASE_STAT_MAX } from "@/consts/constants";
+import { BASE_STAT_MAX, POKEMON_IMAGE_URL_BASE } from "@/consts/constants";
 import { Pokemon } from "@/repositories/graphql";
-import { Divider, Typography } from "@mui/material";
+import { Divider } from "@mui/material";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Styled from "./styled";
 
@@ -22,13 +22,14 @@ const Component = ({ pokemon }: Props) => {
             <Styled.PokemonName gutterBottom>
               {pokemon?.name}
             </Styled.PokemonName>
-
-            <LazyLoadImage
-              src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${pokemon?.id
-                .toString()
-                .padStart(3, "0")}.png`}
-              width={300}
-            />
+            {pokemon.id && (
+              <LazyLoadImage
+                src={`${POKEMON_IMAGE_URL_BASE}${pokemon.id
+                  .toString()
+                  .padStart(3, "0")}.png`}
+                width={300}
+              />
+            )}
           </Styled.CenteredContainer>
 
           <Styled.CenteredStatsContainer>

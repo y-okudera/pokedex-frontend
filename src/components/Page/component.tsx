@@ -1,7 +1,7 @@
+import Header from "@/components/Header";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Head from "next/head";
-import Header from "../Header";
 import Styled from "./styled";
 
 const Component = ({
