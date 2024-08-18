@@ -16,3 +16,9 @@ export const HeaderSize = {
 export const LogoSize = {
   width: 150,
 };
+
+export const GaugeSize = {
+  height: 16,
+};
+
+export const BASE_STAT_MAX = 255;

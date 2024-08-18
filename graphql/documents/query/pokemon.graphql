@@ -6,17 +6,20 @@ query GetPokemon($name: String!) {
     weight
     abilities {
       ability {
+        id
         name
       }
     }
     types {
       type {
+        id
         name
       }
     }
     stats {
       base_stat
       stat {
+        id
         name
       }
     }

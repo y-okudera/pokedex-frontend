@@ -14,5 +14,6 @@ export declare module "@mui/material/styles/createTheme" {
   interface CustomSpace {
     xs: string;
     sm: string;
+    md: string;
   }
 }

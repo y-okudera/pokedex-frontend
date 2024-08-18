@@ -1,6 +1,6 @@
 import { ThumbSize } from "@/consts/constants";
-import { Box, BoxProps } from "@mui/material";
-import { alpha, styled } from "@mui/material/styles";
+import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const GridItemArea = styled(Box)<BoxProps>(({ theme }) => ({
@@ -13,7 +13,12 @@ const GridItemArea = styled(Box)<BoxProps>(({ theme }) => ({
     backgroundColor: theme.palette.action.hover,
     borderRadius: theme.radius?.md,
   },
+  textDecoration: "none",
 }));
+
+const ItemLink = () => ({
+  textDecoration: "none",
+});
 
 const PokemonImage = styled(LazyLoadImage)(({ theme }) => ({
   width: `${ThumbSize.xs.width}px`,
@@ -25,9 +30,19 @@ const PokemonImage = styled(LazyLoadImage)(({ theme }) => ({
   },
 }));
 
+const PokemonName = styled(Typography)<TypographyProps>(({ theme }) => ({
+  ...theme.typography.body1,
+  color: theme.palette.text.primary,
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+}));
+
 const Styled = {
   GridItemArea,
+  ItemLink,
   PokemonImage,
+  PokemonName,
 };
 
 export default Styled;

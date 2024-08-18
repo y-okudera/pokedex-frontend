@@ -268,7 +268,7 @@ export type GetPokemonQueryVariables = Exact<{
 }>;
 
 
-export type GetPokemonQuery = { __typename?: 'Query', pokemon?: { __typename?: 'Pokemon', id?: number | null, name?: string | null, height?: number | null, weight?: number | null, abilities?: Array<{ __typename?: 'Ability', ability?: { __typename?: 'BaseName', name?: string | null } | null } | null> | null, types?: Array<{ __typename?: 'Type', type?: { __typename?: 'BaseName', name?: string | null } | null } | null> | null, stats?: Array<{ __typename?: 'Stat', base_stat?: number | null, stat?: { __typename?: 'BaseName', name?: string | null } | null } | null> | null } | null };
+export type GetPokemonQuery = { __typename?: 'Query', pokemon?: { __typename?: 'Pokemon', id?: number | null, name?: string | null, height?: number | null, weight?: number | null, abilities?: Array<{ __typename?: 'Ability', ability?: { __typename?: 'BaseName', id?: number | null, name?: string | null } | null } | null> | null, types?: Array<{ __typename?: 'Type', type?: { __typename?: 'BaseName', id?: number | null, name?: string | null } | null } | null> | null, stats?: Array<{ __typename?: 'Stat', base_stat?: number | null, stat?: { __typename?: 'BaseName', id?: number | null, name?: string | null } | null } | null> | null } | null };
 
 export type ListPokemonsQueryVariables = Exact<{
   limit: Scalars['Int']['input'];
@@ -288,17 +288,20 @@ export const GetPokemonDocument = gql`
     weight
     abilities {
       ability {
+        id
         name
       }
     }
     types {
       type {
+        id
         name
       }
     }
     stats {
       base_stat
       stat {
+        id
         name
       }
     }

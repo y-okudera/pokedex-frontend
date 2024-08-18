@@ -20,11 +20,12 @@ const CustomToolbar = styled(Toolbar)<ToolbarProps>(({ theme }) => ({
   },
 }));
 
-const LogoImage = styled("img")({
+const LogoImage = styled("img")(({ theme }) => ({
   width: `${LogoSize.width}px`,
   height: "auto",
   objectFit: "contain",
-});
+  margin: `0 ${theme.space?.md}`,
+}));
 
 const Styled = {
   CustomToolbar,
