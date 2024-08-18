@@ -276,7 +276,7 @@ export type ListPokemonsQueryVariables = Exact<{
 }>;
 
 
-export type ListPokemonsQuery = { __typename?: 'Query', pokemons?: { __typename?: 'PokemonList', results?: Array<{ __typename?: 'PokemonItem', id?: number | null, name?: string | null, image?: string | null, artwork?: string | null, dreamworld?: string | null } | null> | null } | null };
+export type ListPokemonsQuery = { __typename?: 'Query', pokemons?: { __typename?: 'PokemonList', count?: number | null, nextOffset?: number | null, results?: Array<{ __typename?: 'PokemonItem', id?: number | null, name?: string | null, image?: string | null, artwork?: string | null, dreamworld?: string | null } | null> | null } | null };
 
 
 export const GetPokemonDocument = gql`
@@ -311,6 +311,8 @@ export const GetPokemonDocument = gql`
 export const ListPokemonsDocument = gql`
     query ListPokemons($limit: Int!, $offset: Int!) {
   pokemons(limit: $limit, offset: $offset) {
+    count
+    nextOffset
     results {
       id
       name

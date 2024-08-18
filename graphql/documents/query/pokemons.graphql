@@ -1,5 +1,7 @@
 query ListPokemons($limit: Int!, $offset: Int!) {
   pokemons(limit: $limit, offset: $offset) {
+    count
+    nextOffset
     results {
       id
       name

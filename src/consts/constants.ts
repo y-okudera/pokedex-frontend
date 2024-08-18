@@ -22,3 +22,5 @@ export const GaugeSize = {
 };
 
 export const BASE_STAT_MAX = 255;
+
+export const FETCH_POKEMONS_LIMIT = 36;

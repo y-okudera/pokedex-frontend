@@ -4,12 +4,16 @@ import { PokemonItem } from "@/repositories/graphql";
 
 type Props = {
   pokemonItems: PokemonItem[] | undefined;
+  lastItemRef: (node: HTMLDivElement | null) => void;
 };
 
-const Component = ({ pokemonItems }: Props) => {
+const Component = ({ pokemonItems, lastItemRef }: Props) => {
   return (
     <Page title="pokedex" description="pokedexのトップページ">
-      <PokemonGrid pokemonItems={pokemonItems ?? []} />;
+      <PokemonGrid
+        pokemonItems={pokemonItems ?? []}
+        lastItemRef={lastItemRef}
+      />
     </Page>
   );
 };

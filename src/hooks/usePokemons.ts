@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 
 const usePokemons = () => {
   const processing = useRef(false);
+  const [count, setCount] = useState<number>(0);
+  const [nextOffset, setNextOffset] = useState<number>(0);
   const [pokemonItems, setPokemonItems] = useState<PokemonItem[]>([]);
   const [error, setError] = useState<Error>();
 
@@ -25,8 +27,9 @@ const usePokemons = () => {
         setTimeout(() => {
           processing.current = false;
         }, 2000);
-        const data = res.pokemons?.results as PokemonItem[];
-        setPokemonItems(data);
+        setCount(res.pokemons?.count as number);
+        setNextOffset(res.pokemons?.nextOffset as number);
+        setPokemonItems(res.pokemons?.results as PokemonItem[]);
       })
       .catch((err) => {
         setTimeout(() => {
@@ -36,7 +39,13 @@ const usePokemons = () => {
       });
   };
 
-  return { pokemonItems, error, fetchPokemons };
+  return {
+    count,
+    nextOffset,
+    pokemonItems,
+    error,
+    fetchPokemons,
+  };
 };
 
 export default usePokemons;
