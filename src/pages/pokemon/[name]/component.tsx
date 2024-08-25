@@ -2,8 +2,10 @@ import Gauge from "@/components/Gauge";
 import Page from "@/components/Page";
 import { BASE_STAT_MAX, POKEMON_IMAGE_URL_BASE } from "@/consts/constants";
 import { Pokemon } from "@/repositories/graphql";
-import { Divider } from "@mui/material";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useTheme } from "@mui/material";
+import { PokemonType } from "@mui/material/styles/createPalette";
+import { useColor } from "color-thief-react";
+import { useMemo } from "react";
 import Styled from "./styled";
 
 type Props = {
@@ -11,6 +13,20 @@ type Props = {
 };
 
 const Component = ({ pokemon }: Props) => {
+  const theme = useTheme();
+
+  const pokemonImageUrl = useMemo(
+    () =>
+      `${POKEMON_IMAGE_URL_BASE}${(pokemon?.id ?? "")
+        .toString()
+        .padStart(3, "0")}.png`,
+    [pokemon]
+  );
+
+  const { data: dominantColor } = useColor(pokemonImageUrl, "hex", {
+    crossOrigin: "anonymous",
+  });
+
   return (
     <Page
       title={pokemon?.name ?? ""}
@@ -23,21 +39,18 @@ const Component = ({ pokemon }: Props) => {
               {pokemon?.name}
             </Styled.PokemonName>
             {pokemon.id && (
-              <LazyLoadImage
-                src={`${POKEMON_IMAGE_URL_BASE}${pokemon.id
-                  .toString()
-                  .padStart(3, "0")}.png`}
-                width={300}
+              <Styled.PokemonImage
+                backgroundColor={dominantColor}
+                src={pokemonImageUrl}
               />
             )}
           </Styled.CenteredContainer>
-
           <Styled.CenteredStatsContainer>
             <Styled.CenteredStatsInnerContainer>
               {Object.entries({
                 ID: `#${(pokemon?.id ?? "").toString().padStart(3, "0")}`,
-                Height: pokemon?.height,
-                Weight: pokemon?.weight,
+                Height: `${((pokemon?.height ?? 0) * 0.1).toFixed(1)} m`,
+                Weight: `${((pokemon?.weight ?? 0) * 0.1).toFixed(1)} kg`,
                 Ability: pokemon?.abilities?.map(
                   (ability) => `${ability?.ability?.name}`
                 ),
@@ -47,21 +60,22 @@ const Component = ({ pokemon }: Props) => {
                   <Styled.ItemName>{label}</Styled.ItemName>
                   {Array.isArray(value) ? (
                     <>
-                      <Styled.StatsValue>
-                        {value.map((v, i) => (
-                          <>
-                            {v}
-                            {i < value.length - 1 && <br />}
-                          </>
-                        ))}
-                      </Styled.StatsValue>
-                      <Divider />
+                      {value.map((v, i) => (
+                        <Styled.StatsValue
+                          backgroundColor={
+                            theme.palette.pokemonType[v as keyof PokemonType] ??
+                            dominantColor
+                          }
+                        >
+                          {v}
+                          {i < value.length - 1 && <br />}
+                        </Styled.StatsValue>
+                      ))}
                     </>
                   ) : (
-                    <>
-                      <Styled.StatsValue>{value}</Styled.StatsValue>
-                      <Divider />
-                    </>
+                    <Styled.StatsValue backgroundColor={dominantColor}>
+                      {value}
+                    </Styled.StatsValue>
                   )}
                 </>
               ))}
@@ -78,11 +92,11 @@ const Component = ({ pokemon }: Props) => {
                       }`}
                     </Styled.SubItemName>
                   )}
-
                   <Gauge
                     value={stat?.base_stat ?? 0}
                     maxValue={BASE_STAT_MAX}
-                  ></Gauge>
+                    barColor={dominantColor}
+                  />
                   <Styled.StatsDetailValue>
                     {stat?.base_stat} / {BASE_STAT_MAX}
                   </Styled.StatsDetailValue>

@@ -7,6 +7,10 @@ export const ThumbSize = {
     width: 150,
     height: 150,
   },
+  md: {
+    width: 300,
+    height: 300,
+  },
 };
 
 export const HeaderSize = {

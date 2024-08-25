@@ -1,20 +1,29 @@
 import { ThumbSize } from "@/consts/constants";
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { alpha, styled } from "@mui/material/styles";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-const GridItemArea = styled(Box)<BoxProps>(({ theme }) => ({
-  padding: `0 ${theme.space?.sm}`,
-  textAlign: "center",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  "&:hover": {
-    backgroundColor: theme.palette.action.hover,
-    borderRadius: theme.radius?.md,
-  },
-  textDecoration: "none",
-}));
+interface GridItemAreaProps extends BoxProps {
+  hoverBackgroundColor?: string;
+}
+
+const GridItemArea = styled(Box)<GridItemAreaProps>(
+  ({ theme, hoverBackgroundColor }) => ({
+    padding: `0 ${theme.space?.sm}`,
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    "&:hover": {
+      backgroundColor: alpha(
+        hoverBackgroundColor ?? theme.palette.action.hover,
+        0.75
+      ),
+      borderRadius: theme.radius?.md,
+    },
+    textDecoration: "none",
+  })
+);
 
 const ItemLink = () => ({
   textDecoration: "none",
@@ -32,6 +41,7 @@ const PokemonImage = styled(LazyLoadImage)(({ theme }) => ({
 
 const PokemonName = styled(Typography)<TypographyProps>(({ theme }) => ({
   ...theme.typography.body1,
+  fontWeight: "bold",
   color: theme.palette.text.primary,
   overflow: "hidden",
   textOverflow: "ellipsis",
