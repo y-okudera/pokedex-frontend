@@ -1,7 +1,7 @@
 <div align="center">
   <img width="1624" src="https://github.com/user-attachments/assets/de459139-04aa-424d-82f2-ca64cfc120bf" alt="pokedex_frontend">
-  <img width="1624" alt="pokedex_top" src="https://github.com/user-attachments/assets/576fd936-5d34-4de1-8dcd-0860ddffc990">
-  <img width="1624" alt="pokedex_detail" src="https://github.com/user-attachments/assets/51e8882e-2eee-4799-a8bd-361fa2598b49">
+  <img width="1624" alt="pokedex_top" src="https://github.com/user-attachments/assets/a8ea1755-de5e-40af-ad97-288886c5bd34">
+  <img width="1624" alt="pokedex_detail" src="https://github.com/user-attachments/assets/cbfaed34-74e9-4390-80c6-e25549a088d9">
 </div>
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
